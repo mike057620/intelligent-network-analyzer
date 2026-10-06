@@ -359,6 +359,14 @@ def exporter_csv():
     analyses = obtenir_analyses()
 
     if not analyses:
+        if os.getenv("PUBLIC_HOSTING") == "true":
+            return {
+                "success": False,
+                "error": (
+                    "L'exportation de l'historique n'est pas disponible "
+                    "sur l'hébergement public."
+                )
+            }
         return {
             "success": False,
             "error": "Aucune analyse disponible."

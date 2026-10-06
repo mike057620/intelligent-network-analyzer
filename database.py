@@ -114,8 +114,15 @@ def enregistrer_analyse(resultat):
 
         destinations = securite.get(
             "destinations",
-            [],
+            0,
         )
+
+        if isinstance(destinations, int):
+            total_destinations = destinations
+        elif isinstance(destinations, (list, tuple, set)):
+            total_destinations = len(destinations)
+        else:
+            total_destinations = 0
 
         ligne_supabase = {
             "duration_seconds": int(
@@ -148,9 +155,7 @@ def enregistrer_analyse(resultat):
             "total_ports": len(
                 ports
             ),
-            "total_destinations": len(
-                destinations
-            ),
+            "total_destinations": total_destinations,
             "result": resultat,
         }
 

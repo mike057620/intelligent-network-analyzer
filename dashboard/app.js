@@ -1,4 +1,4 @@
-﻿// ============================================================
+// ============================================================
 // INTELLIGENT NETWORK ANALYZER
 // Moteur JavaScript du dashboard SOC
 // ============================================================
@@ -1621,6 +1621,62 @@ async function chargerHistorique() {
                 `;
             })
             .join("");
+        // ----------------------------------------------------
+        // Charger la dernière analyse dans le dashboard
+        // ----------------------------------------------------
+
+        const derniereAnalyse =
+            analyses[analyses.length - 1];
+
+        if (derniereAnalyse) {
+            const statistiques =
+                derniereAnalyse.statistiques || {};
+
+            const securite =
+                derniereAnalyse.securite || {};
+
+            const insights =
+                derniereAnalyse.insights || {};
+
+            afficherScore(
+                securite.score,
+                securite.niveau
+            );
+
+            afficherEtatSecurite(
+                securite
+            );
+
+            afficherStatistiques(
+                statistiques,
+                securite
+            );
+
+            afficherEvenements(
+                securite,
+                insights
+            );
+
+            afficherCommunications(
+                derniereAnalyse.communications || []
+            );
+
+            afficherPaquets(
+                derniereAnalyse.paquets || []
+            );
+
+            afficherEnrichissements(
+                derniereAnalyse.enrichissements || []
+            );
+
+            if (lastAnalysis) {
+                lastAnalysis.textContent =
+                    formaterDate(
+                        derniereAnalyse.timestamp
+                    );
+            }
+        }
+
 
     } catch (erreur) {
 
