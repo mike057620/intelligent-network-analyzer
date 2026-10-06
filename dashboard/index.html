@@ -1,0 +1,742 @@
+﻿
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Intelligent Network Analyzer</title>
+
+   <link rel="stylesheet" href="/dashboard/style.css">
+</head>
+
+<body>
+
+    <!-- =====================================================
+         BARRE SUPÉRIEURE
+         ===================================================== -->
+
+    <header class="topbar">
+
+        <div class="brand">
+
+            <div class="brand-icon">
+                🛡️
+            </div>
+
+            <div>
+                <h1>INTELLIGENT NETWORK ANALYZER</h1>
+                <span>LOCAL SECURITY OPERATIONS CENTER</span>
+            </div>
+
+        </div>
+
+        <div class="system-status">
+
+            <span class="status-dot"></span>
+
+            <span>SYSTEM ONLINE</span>
+
+        </div>
+
+    </header>
+
+
+    <!-- =====================================================
+         CONTENU PRINCIPAL
+         ===================================================== -->
+
+    <main class="dashboard">
+
+
+        <!-- =================================================
+             TITRE
+             ================================================= -->
+
+        <section class="hero">
+
+            <div>
+
+                <p class="eyebrow">
+                    NETWORK SECURITY MONITORING
+                </p>
+
+                <h2>
+                    Centre intelligent
+                    <span>de surveillance réseau</span>
+                </h2>
+
+                <p class="hero-description">
+                    Analyse du trafic réseau, détection des anomalies
+                    et identification des comportements suspects.
+                </p>
+
+            </div>
+
+            <div class="last-analysis">
+
+                <span>DERNIÈRE ANALYSE</span>
+
+                <strong id="lastAnalysis">
+                    Aucune analyse
+                </strong>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             SCORE DE SÉCURITÉ
+             ================================================= -->
+
+        <section class="security-panel">
+
+            <div class="security-score">
+
+                <div class="score-ring" id="scoreRing">
+
+                    <div class="score-content">
+
+                        <strong id="securityScore">
+                            0
+                        </strong>
+
+                        <span>/100</span>
+
+                    </div>
+
+                </div>
+
+                <div class="score-label">
+
+                    <span>SCORE DE SÉCURITÉ</span>
+
+                    <strong id="securityLevel">
+                        EN ATTENTE
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <div class="security-message">
+
+                <div class="message-icon" id="securityIcon">
+                    🛡️
+                </div>
+
+                <div>
+
+                    <h3 id="securityTitle">
+                        Aucune analyse effectuée
+                    </h3>
+
+                    <p id="securityMessage">
+                        Lancez une analyse réseau pour évaluer
+                        le niveau de sécurité de votre environnement.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             STATISTIQUES
+             ================================================= -->
+
+        <section class="stats-grid">
+
+
+            <article class="stat-card">
+
+                <div class="stat-icon">
+                    📦
+                </div>
+
+                <div>
+
+                    <span>PAQUETS ANALYSÉS</span>
+
+                    <strong id="packetsCount">
+                        0
+                    </strong>
+
+                </div>
+
+            </article>
+
+
+            <article class="stat-card">
+
+                <div class="stat-icon">
+                    🔌
+                </div>
+
+                <div>
+
+                    <span>PORTS OBSERVÉS</span>
+
+                    <strong id="portsCount">
+                        0
+                    </strong>
+
+                </div>
+
+            </article>
+
+
+            <article class="stat-card">
+
+                <div class="stat-icon">
+                    🌐
+                </div>
+
+                <div>
+
+                    <span>DESTINATIONS</span>
+
+                    <strong id="destinationsCount">
+                        0
+                    </strong>
+
+                </div>
+
+            </article>
+
+
+            <article class="stat-card">
+
+                <div class="stat-icon">
+                    🚨
+                </div>
+
+                <div>
+
+                    <span>SCANS DÉTECTÉS</span>
+
+                    <strong id="scansCount">
+                        0
+                    </strong>
+
+                </div>
+
+            </article>
+
+
+        </section>
+
+
+        <!-- =================================================
+             ANALYSE
+             ================================================= -->
+
+        <section class="analysis-control">
+
+            <div class="control-information">
+
+                <div class="control-icon">
+                    🔍
+                </div>
+
+                <div>
+
+                    <h3>
+                        Analyse réseau
+                    </h3>
+
+                    <p>
+                        Capturez et analysez le trafic réseau
+                        de votre machine.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="control-actions">
+
+                <label for="duration">
+                    DURÉE
+                </label>
+
+                <select id="duration">
+
+                    <option value="5">
+                        5 secondes
+                    </option>
+
+                    <option value="10" selected>
+                        10 secondes
+                    </option>
+
+                    <option value="20">
+                        20 secondes
+                    </option>
+
+                    <option value="30">
+                        30 secondes
+                    </option>
+
+                    <option value="60">
+                        60 secondes
+                    </option>
+
+                </select>
+
+
+                <button
+                    id="analyzeButton"
+                    type="button"
+                >
+
+                    <span id="buttonIcon">
+                        ⚡
+                    </span>
+
+                    <span id="buttonText">
+                        LANCER L'ANALYSE
+                    </span>
+
+                </button>
+
+            </div>
+
+        </section>
+
+<!-- EXPORTS -->
+<div class="export-panel">
+    <div class="export-header">
+        <div>
+            <span class="panel-kicker">REPORTING</span>
+            <h3>Exporter le rapport</h3>
+            <p>
+                Téléchargez les résultats de l'analyse
+                dans le format de votre choix.
+            </p>
+        </div>
+    </div>
+
+    <div class="export-actions">
+        <a
+            href="/export/json"
+            class="export-button export-json"
+            download
+        >
+            <span class="export-icon">↧</span>
+            <span>
+                <strong>JSON</strong>
+                <small>Données complètes</small>
+            </span>
+        </a>
+
+        <a
+            href="/export/csv"
+            class="export-button export-csv"
+            download
+        >
+            <span class="export-icon">↧</span>
+            <span>
+                <strong>CSV</strong>
+                <small>Historique des analyses</small>
+            </span>
+        </a>
+
+        <a
+            href="/export/pdf"
+            class="export-button export-pdf"
+            download
+        >
+            <span class="export-icon">↧</span>
+            <span>
+                <strong>PDF</strong>
+                <small>Rapport professionnel</small>
+            </span>
+        </a>
+    </div>
+</div>
+
+        <!-- =================================================
+             ZONE DES INFORMATIONS
+             ================================================= -->
+
+        <section class="information-grid">
+
+
+            <!-- Protocoles -->
+
+            <article class="panel">
+
+                <div class="panel-header">
+
+                    <div>
+
+                        <span class="panel-kicker">
+                            TRAFIC
+                        </span>
+
+                        <h3>
+                            Protocoles réseau
+                        </h3>
+
+                    </div>
+
+                    <span class="panel-badge">
+                        LIVE
+                    </span>
+
+                </div>
+
+                <div
+                    id="protocolsList"
+                    class="protocols-list"
+                >
+
+                    <div class="empty-state">
+                        <span>📡</span>
+                        <p>
+                            Lancez une analyse pour afficher
+                            les protocoles détectés.
+                        </p>
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <!-- Services -->
+
+            <article class="panel">
+
+                <div class="panel-header">
+
+                    <div>
+
+                        <span class="panel-kicker">
+                            SERVICES
+                        </span>
+
+                        <h3>
+                            Ports principaux
+                        </h3>
+
+                    </div>
+
+                </div>
+
+                <div
+                    id="portsList"
+                    class="ports-list"
+                >
+
+                    <div class="empty-state">
+                        <span>🔌</span>
+                        <p>
+                            Aucun port analysé.
+                        </p>
+                    </div>
+
+                </div>
+
+            </article>
+
+
+        </section>
+
+
+        <!-- =================================================
+             ÉVÉNEMENTS DE SÉCURITÉ
+             ================================================= -->
+
+        <section class="panel security-events">
+
+            <div class="panel-header">
+
+                <div>
+
+                    <span class="panel-kicker">
+                        SECURITY MONITOR
+                    </span>
+
+                    <h3>
+                        Événements de sécurité
+                    </h3>
+
+                </div>
+
+                <span id="eventCount" class="panel-badge">
+                    0 ÉVÉNEMENT
+                </span>
+
+            </div>
+
+
+            <div id="securityEvents">
+
+                <div class="empty-security">
+
+                    <div class="success-icon">
+                        ✓
+                    </div>
+
+                    <div>
+
+                        <strong>
+                            Système en attente
+                        </strong>
+
+                        <p>
+                            Les anomalies et menaces détectées
+                            apparaîtront ici.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+<!-- =========================================================
+     SECURITY TIMELINE
+     ========================================================= -->
+
+<section class="panel risk-panel">
+
+    <div class="panel-header">
+
+        <div>
+
+            <span class="panel-kicker">
+                RISK EVOLUTION
+            </span>
+
+            <h2>
+                Évolution du score de sécurité
+            </h2>
+
+            <p>
+                Suivi de l'évolution du niveau de risque
+                au fil des analyses réseau.
+            </p>
+
+        </div>
+
+        <div class="history-status">
+
+            <span class="status-dot"></span>
+
+            <span id="riskHistoryCount">
+                0 analyse
+            </span>
+
+        </div>
+
+    </div>
+
+    <div class="risk-chart-wrapper">
+
+        <div class="risk-chart-grid">
+
+            <div class="risk-y-axis">
+
+                <span>100</span>
+                <span>75</span>
+                <span>50</span>
+                <span>25</span>
+                <span>0</span>
+
+            </div>
+
+            <div class="risk-chart">
+
+                <div class="risk-grid-line line-100"></div>
+                <div class="risk-grid-line line-75"></div>
+                <div class="risk-grid-line line-50"></div>
+                <div class="risk-grid-line line-25"></div>
+                <div class="risk-grid-line line-0"></div>
+
+                <div id="riskChartBars" class="risk-chart-bars">
+                </div>
+
+            </div>
+
+        </div>
+
+        <div id="riskChartLabels" class="risk-chart-labels">
+        </div>
+
+    </div>
+
+    <div id="riskChartEmpty" class="empty-state">
+        Les données d'évolution apparaîtront
+        après plusieurs analyses.
+    </div>
+
+</section>
+<section class="panel history-panel">
+
+    <div class="panel-header">
+        <div>
+
+<!-- PAQUETS -->
+<section class="panel packets-panel">
+    <div class="panel-header">
+        <div>
+            <span class="panel-kicker">PACKET INSPECTION</span>
+            <h2>Paquets observés</h2>
+            <p>
+                Détails techniques des paquets capturés pendant
+                la dernière analyse.
+            </p>
+        </div>
+
+        <div class="history-status">
+            <span class="status-dot"></span>
+            <span id="packetsDetailsCount">0 paquet</span>
+        </div>
+    </div>
+
+    <div class="packets-layout">
+        <div class="packets-list" id="packetsList">
+            <div class="empty-state">
+                Lancez une analyse pour afficher les paquets.
+            </div>
+        </div>
+
+        <div class="packet-detail" id="packetDetail">
+            <div class="detail-empty">
+                <div class="detail-empty-icon">◈</div>
+                <h3>Sélectionnez un paquet</h3>
+                <p>
+                    Les informations techniques du paquet
+                    sélectionné apparaîtront ici.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ENRICHISSEMENT IP -->
+<section class="panel enrichment-panel">
+    <div class="panel-header">
+        <div>
+            <span class="panel-kicker">THREAT INTELLIGENCE</span>
+            <h2>Enrichissement des destinations</h2>
+            <p>
+                Informations complémentaires récupérées depuis
+                l'API externe pour les adresses IP publiques observées.
+            </p>
+        </div>
+
+        <div class="history-status">
+            <span class="status-dot"></span>
+            <span id="enrichmentCount">0 IP</span>
+        </div>
+    </div>
+
+    <div id="enrichmentList" class="enrichment-list">
+        <div class="empty-state">
+            Lancez une analyse pour afficher les enrichissements.
+        </div>
+    </div>
+</section>
+
+            <!-- COMMUNICATIONS -->
+<section class="panel communications-panel">
+    <div class="panel-header">
+        <div>
+            <span class="panel-kicker">NETWORK FLOWS</span>
+            <h2>Communications observées</h2>
+            <p>
+                Regroupement des paquets appartenant aux mêmes
+                communications réseau.
+            </p>
+        </div>
+
+        <div class="history-status">
+            <span class="status-dot"></span>
+            <span id="communicationsCount">0 communication</span>
+        </div>
+    </div>
+
+    <div class="communications-layout">
+        <div class="communications-list" id="communicationsList">
+            <div class="empty-state">
+                Lancez une analyse pour afficher les communications.
+            </div>
+        </div>
+
+        <div class="communication-detail" id="communicationDetail">
+            <div class="detail-empty">
+                <div class="detail-empty-icon">↔</div>
+                <h3>Sélectionnez une communication</h3>
+                <p>
+                    Les informations détaillées de la communication
+                    sélectionnée apparaîtront ici.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+            <span class="panel-kicker">SOC TIMELINE</span>
+            <h2>Historique des analyses</h2>
+            <p>
+                Évolution des analyses de sécurité effectuées
+                par le moteur réseau.
+            </p>
+        </div>
+
+        <div class="history-status">
+            <span class="status-dot"></span>
+            <span id="historyCount">0 analyse</span>
+        </div>
+    </div>
+
+    <!-- Timeline -->
+    <div id="historyList" class="history-list">
+
+        <div class="empty-state">
+            Chargement de l'historique...
+        </div>
+
+    </div>
+
+</section>
+
+    </main>
+
+
+    <!-- =====================================================
+         FOOTER
+         ===================================================== -->
+
+    <footer>
+
+        <span>
+            Intelligent Network Analyzer
+        </span>
+
+        <span>
+            Python • Scapy • FastAPI
+        </span>
+
+    </footer>
+
+
+    <script src="/dashboard/app.js"></script>
+
+</body>
+
+

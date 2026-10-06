@@ -1,0 +1,15 @@
+﻿.venv/
+__pycache__/
+*.pyc
+
+.env
+.env.*
+!.env.example
+
+network_analyzer.db
+
+*_backup*.py
+*_backup*.js
+*_backup*.html
+*_backup*.css
+.venv/
