@@ -1,4 +1,5 @@
-﻿import csv
+﻿import os
+import csv
 import io
 from reportlab.lib import colors
 from reportlab.lib.pagesizes import A4
@@ -230,11 +231,20 @@ def analyser_reseau(
             f"{type(erreur).__name__}: {erreur}"
         )
 
+        if os.getenv("PUBLIC_HOSTING") == "true":
+            return {
+                "success": False,
+                "error": (
+                    "La capture réseau réelle n'est pas disponible "
+                    "sur l'hébergement public. Effectuez la capture "
+                    "depuis l'environnement local autorisé."
+                )
+            }
+
         return {
             "success": False,
             "error": "Une erreur interne est survenue pendant l'analyse."
         }
-
 
 # ============================================================
 # HISTORIQUE COMPLET
